@@ -10,7 +10,9 @@ module com.example.pisenacdesk {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
 
     opens com.example.pisenacdesk to javafx.fxml;
+    opens gui to javafx.fxml;
     exports com.example.pisenacdesk;
 }

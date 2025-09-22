@@ -28,12 +28,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Suporte">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="menuSuporte" mnemonicParsing="false" onAction="#onMenuItemSuporteAction" text="About" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Configurações">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem fx:id="menuItemConfig" mnemonicParsing="false" onAction="#onMenuItemConfigAction" text="Sair" />
                     </items>
                   </Menu>
               </menus>

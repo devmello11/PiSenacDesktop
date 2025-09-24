@@ -36,10 +36,10 @@ public class MainViewController implements Initializable {
     private VBox mainVbox;
 
     public void onMenuItemUsuariosAction() {
-        System.out.println("Menu Item Usuarios clicked");
+        loadView("/gui/Crud.fxml");
     }
     public void onMenuItemEventosAction() {
-        System.out.println("Menu Item Eventos clicked");
+
     }
     public void onMenuItemAdmAction() {
         System.out.println("Menu Item Adm clicked");

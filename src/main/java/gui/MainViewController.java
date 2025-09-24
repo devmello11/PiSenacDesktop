@@ -4,10 +4,10 @@ import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
-
+import javafx.scene.layout.VBox;
+import javafx.scene.Node;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +31,10 @@ public class MainViewController implements Initializable {
     @FXML
     private MenuItem menuSuporte;
 
+    // VBox principal do layout (injetado via FXML)
+    @FXML
+    private VBox mainVbox;
+
     public void onMenuItemUsuariosAction() {
         System.out.println("Menu Item Usuarios clicked");
     }
@@ -53,23 +57,25 @@ public class MainViewController implements Initializable {
         System.out.println("Menu Item Config clicked");
     }
     public void onMenuItemSuporteAction() {
-        System.out.println("Menu Item Suporte clicked");
+        loadView("/gui/About.fxml");
     }
-
 
     @Override
     public void initialize(URL uri, ResourceBundle rb) {
     }
-    private void loadView(String absoluteName) {
+
+    private synchronized void loadView(String absoluteName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-            Vbox newVbox = loader.load();
-            Scene mainScene = Main.getMainScene();
+            VBox newVbox = (VBox) loader.load();
+
+            Node mainMenu = mainVbox.getChildren().get(0);
+            mainVbox.getChildren().clear();
+            mainVbox.getChildren().add(mainMenu);
+            mainVbox.getChildren().addAll(newVbox.getChildren());
         }
         catch (IOException e){
             Alerts.showAlert("IO Exception", "Erro carregamento", e.getMessage(), Alert.AlertType.ERROR);
         }
-
     }
-
 }
